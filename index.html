@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny Interaction</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #ffeeaa;
+            font-family: "Comic Sans MS", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #ff6f91;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .image {
+            width: 250px;
+            margin-bottom: 20px;
+        }
+
+        #buttonContainer {
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            color: white;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        #yesBtn {
+            background-color: #ffb3c6;
+        }
+
+        #noBtn {
+            background-color: #ff6f91;
+        }
+
+        #noBtn:hover {
+            transform: scale(1.3) rotate(10deg);
+            background-color: #ff5e5e;
+        }
+
+        .message {
+            font-size: 2.5em;
+            color: #ff6f91;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <img id="gifImage" src="https://gifdb.com/images/high/mochi-cats-cute-piggyback-hxdef8vbjhyy51j8.gif" alt="">
+    <h1 id="questionText">Do you love me? ❤️</h1>
+    <div id="buttonContainer">
+        <button id="yesBtn">Yes 🥰</button>
+        <button id="noBtn">No 🤪</button>
+    </div>
+    <div id="message"></div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const messageDiv = document.getElementById('message');
+        const gifImage = document.getElementById('gifImage');
+        const questionText = document.getElementById('questionText');
+
+        noBtn.addEventListener('mouseover', () => {
+            const maxX = window.innerWidth - noBtn.offsetWidth;
+            const maxY = window.innerHeight - noBtn.offsetHeight;
+            
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+        });
+
+        yesBtn.addEventListener('click', () => {
+            gifImage.src = "https://media3.giphy.com/media/f9EmXxglhdhAj1bo28/giphy.gif?cid=6c09b95216f07zf1nzx1x0kn9sgesz5z0h6v0o6ms37b8qkz&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g";
+            gifImage.style.display = "block";
+            questionText.style.display = "none";
+            messageDiv.textContent = "Yay! I love you 🥰";
+        });
+    </script>
+</body>
+</html>
